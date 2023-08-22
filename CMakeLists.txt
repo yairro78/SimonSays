@@ -8,7 +8,7 @@ option(USE_TOOLCHAIN "Use toolchain for compilation" OFF)
 
 if(USE_TOOLCHAIN)
     message("Using toolchain for compilation")
-    set(CMAKE_TOOLCHAIN_FILE ~/SimonRepo/raspberrytoolchaincmake)
+    set(CMAKE_TOOLCHAIN_FILE ~/SimonSays/raspberrytoolchain.cmake)
 endif()
 project(SimonSays_project VERSION 1.0.0)
 
