@@ -23,7 +23,7 @@ createNative() {
 
 # Specify the target path you want to compare against
 cd ./build/ || exit
-rm * r
+rm * -r
 
 # Determine which option to execute
 
