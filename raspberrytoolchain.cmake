@@ -2,6 +2,7 @@
 SET(CMAKE_SYSTEM_NAME Linux)
 SET(CMAKE_C_COMPILER arm-linux-gnueabihf-gcc)
 SET(CMAKE_CXX_COMPILER arm-linux-gnueabihf-g++)
+set(CMAKE_GENERATOR "Unix Makefiles" CACHE STRING "Generator used")
 
 # Below call is necessary to avoid non-RT problem.
 SET(CMAKE_LIBRARY_ARCHITECTURE arm-linux-gnueabihf)
