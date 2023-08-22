@@ -11,8 +11,6 @@
 
 // #define DEFAULT_KEYS_NUMBER 4;
 
-pthread_mutex_t count_mutex;
-
 void clearScreen() {
   using namespace std::this_thread;     // sleep_for, sleep_until
   using namespace std::chrono_literals; // ns, us, ms, s, h, etc.
@@ -23,7 +21,7 @@ void clearScreen() {
   system("clear");
 } // clear screen
 
-void displaySequence(const d std::vector<int> &sequence) {
+void displaySequence(const std::vector<int> &sequence) {
 
   int number = 1;
   clearScreen();
