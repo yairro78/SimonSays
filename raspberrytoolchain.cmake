@@ -1,11 +1,7 @@
 #File raspberrytoolchain.cmake for ROS and system packages to cross compile.
 SET(CMAKE_SYSTEM_NAME Linux)
-#SET(CMAKE_C_COMPILER arm-linux-gnueabihf-gcc)
-#SET(CMAKE_CXX_COMPILER arm-linux-gnueabihf-g++)
-
-SET(CMAKE_C_COMPILER $ENV{HOME}/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc)
-SET(CMAKE_CXX_COMPILER $ENV{HOME}/rpi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-g++)
-
+SET(CMAKE_C_COMPILER arm-linux-gnueabihf-gcc)
+SET(CMAKE_CXX_COMPILER arm-linux-gnueabihf-g++)
 
 # Below call is necessary to avoid non-RT problem.
 SET(CMAKE_LIBRARY_ARCHITECTURE arm-linux-gnueabihf)
