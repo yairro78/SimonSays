@@ -23,7 +23,13 @@ createNative() {
 
 # Specify the target path you want to compare against
 cd ./build/ || exit
-rm * -r
+
+if [ -z "$(ls -A ./)" ]; then
+    echo "Directory is empty"
+else
+    echo "Directory is not empty"
+    rm * -r
+fi
 
 # Determine which option to execute
 
