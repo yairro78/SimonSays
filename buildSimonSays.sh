@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check the number of arguments provided
-if [ $# -ne 1 ]; then
+if [ $# -ne 2 ]; then
     echo "Usage: $0 <option>"
     echo "Options:"
     echo "  Build Native Simon Says game - raspberry"
@@ -11,17 +11,21 @@ fi
 
 # Read the arguments
 option=$1
+keysNumber=$2
 
 # Define functions for each option
 create_RaspberryPi() {
-    cmake -DUSE_TOOLCHAIN=ON ..
+    cmake -DUSE_TOOLCHAIN=ON -DNUMBER_OF_KEYS_IN_GAME="$keysNumber" ..
 }
 
 createNative() {
-    cmake -DUSE_TOOLCHAIN=OFF ..
+    cmake -DUSE_TOOLCHAIN=OFF -DNUMBER_OF_KEYS_IN_GAME="$keysNumber" ..
 }
 
 # Specify the target path you want to compare against
+chmod -R 777 /usr/local/include
+chmod -R 777 /usr/local/lib
+mkdir build
 cd ./build/ || exit
 
 if [ -z "$(ls -A ./)" ]; then

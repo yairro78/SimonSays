@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.0.0)
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
+
 
 
 #option to enable/disable using Raspberry Pi toolchain
@@ -12,11 +13,22 @@ if(USE_TOOLCHAIN)
 endif()
 project(SimonSays_project VERSION 1.0.0)
 
-add_subdirectory(bsp)
+#add_definitions( -DNUMBER_OF_KEYS_IN_GAME=${NUMBER_OF_KEYS_IN_GAME} )
 
+## Define the variable
+#set(NUMBER_OF_KEYS_IN_GAME "" CACHE STRING "Number of Keys")
+
+# Define an option to accept an external parameter
+option(NUMBER_OF_KEYS_IN_GAME "An NUMBER_OF_KEYS_IN_GAME" "")
+## Generate a header file containing the parameter
+configure_file(config.h.in config.h)
+
+add_subdirectory(bsp)
 
 add_executable(SimonSays
 main.cpp)
+
+target_include_directories(SimonSays PRIVATE ${CMAKE_BINARY_DIR})
 
 target_link_libraries(SimonSays bsp)
 

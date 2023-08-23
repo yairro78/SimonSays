@@ -8,9 +8,11 @@
 #include <thread>
 #include <unistd.h>
 #include <vector>
+#include "config.h"
 
 // #define DEFAULT_KEYS_NUMBER 4;
 
+// Clear Screen with added delay
 void clearScreen() {
   using namespace std::this_thread;     // sleep_for, sleep_until
   using namespace std::chrono_literals; // ns, us, ms, s, h, etc.
@@ -18,12 +20,13 @@ void clearScreen() {
 
   sleep_for(10ns);
   sleep_until(system_clock::now() + 2s);
+
   system("clear");
 } // clear screen
 
 void displaySequence(const std::vector<int> &sequence) {
 
-  int number = 1;
+  int number = 1; // sequench nu,ber
   clearScreen();
 
   for (int color : sequence) {
@@ -36,8 +39,9 @@ void displaySequence(const std::vector<int> &sequence) {
     std::cout << std::endl;
     ;
   }
-} // handls each gane sequance input
+}
 
+// handls each gane sequance input
 bool checkInput(const std::vector<int> &sequence,
                 const std::vector<int> &userInput) {
   if (sequence.size() != userInput.size()) {
@@ -62,31 +66,27 @@ int main(int argc, char *argv[1]) {
 
   bool gameOver = false;
   int round = 1;
-  int numberOfKeys = 4; // NUMBER_OF_KEYS_IN_GAME; //DEFAULT_KEYS_NUMBER;
+  int numberOfKeys = NUMBER_OF_KEYS_IN_GAME; // DEFAULT_KEYS_NUMBER;
 
   if (argc > 1) {
     numberOfKeys = std::stoi(argv[1]);
   }
 
   while (!gameOver) {
-    // clearScreen();
     std::cout << "Round" << round << std::endl << std::flush;
-
     sequence.push_back(rand() % numberOfKeys + 1);
-
     displaySequence(sequence);
-
     userInput.clear();
     clearScreen();
+    // Input Stage user input
     for (int i = 0; i < round; ++i) {
       int color;
       std::cout << "enter color" << i + 1 << ": " << std::flush;
-      ;
+
       color = BSP_readHwButton();
       userInput.push_back(color);
-      //  userInput.push_back(BSP_readHwButton());
     }
-
+    // check result
     if (!checkInput(sequence, userInput)) {
       std::cout << "game Over! score : " << round << std::endl;
       gameOver = true;
