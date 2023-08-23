@@ -66,7 +66,7 @@ int main(int argc, char *argv[1]) {
 
   bool gameOver = false;
   int round = 1;
-  int numberOfKeys = NUMBER_OF_KEYS_IN_GAME; // DEFAULT_KEYS_NUMBER;
+  int numberOfKeys = NUMBER_OF_KEYS_IN_GAME; // Number of key options in the game
 
   if (argc > 1) {
     numberOfKeys = std::stoi(argv[1]);

@@ -6,6 +6,7 @@ if [ $# -ne 2 ]; then
     echo "Options:"
     echo "  Build Native Simon Says game - raspberry"
     echo "  Build RaspberyPi Arm Simon Says game - native"
+    echo "  Seccond parameter is the number of keys in the game"
     exit 1
 fi
 
@@ -21,8 +22,6 @@ create_RaspberryPi() {
 createNative() {
     cmake -DUSE_TOOLCHAIN=OFF -DNUMBER_OF_KEYS_IN_GAME="$keysNumber" ..
 }
-
-# Specify the target path you want to compare against
 
 mkdir build
 cd ./build/ || exit

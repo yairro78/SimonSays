@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.0.0)
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 
-
-
 #option to enable/disable using Raspberry Pi toolchain
 option(USE_TOOLCHAIN "Use toolchain for compilation" OFF)
 
@@ -11,12 +9,8 @@ if(USE_TOOLCHAIN)
     message("Using toolchain for compilation")
     set(CMAKE_TOOLCHAIN_FILE ./raspberrytoolchain.cmake)
 endif()
+
 project(SimonSays_project VERSION 1.0.0)
-
-#add_definitions( -DNUMBER_OF_KEYS_IN_GAME=${NUMBER_OF_KEYS_IN_GAME} )
-
-## Define the variable
-#set(NUMBER_OF_KEYS_IN_GAME "" CACHE STRING "Number of Keys")
 
 # Define an option to accept an external parameter
 option(NUMBER_OF_KEYS_IN_GAME "An NUMBER_OF_KEYS_IN_GAME" "")
