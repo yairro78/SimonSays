@@ -23,8 +23,7 @@ createNative() {
 }
 
 # Specify the target path you want to compare against
-chmod -R 777 /usr/local/include
-chmod -R 777 /usr/local/lib
+
 mkdir build
 cd ./build/ || exit
 
